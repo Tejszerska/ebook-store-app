@@ -21,10 +21,13 @@ public class Ebook {
     @ManyToMany (mappedBy = "publishedEbooks")
     private List<Author> authors;
     private String publisher;
-    private String coverUrl;
+    private String coverUrl; //@TODO zapytać R.
     private String description;
+    @Enumerated(EnumType.STRING)
     private Genre genre;
-    private Float aFloat;
+    private Float sellingPrice;
+    private Float purchaseCost;
+    @Enumerated(EnumType.STRING)
     private Format format;
 //    private List <Language>
 

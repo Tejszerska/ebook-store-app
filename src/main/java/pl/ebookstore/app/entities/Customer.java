@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class User {
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -26,8 +26,8 @@ public class User {
     private Role role;
     @Enumerated(EnumType.STRING)
     private NewsMessagePreference newsMessagePreference;
-    @OneToMany (mappedBy = "user")
-    private List <Order> pastOrders;
+    @OneToMany (mappedBy = "customer")
+    private List <Purchase> pastPurchases;
 
 
 
