@@ -1,10 +1,11 @@
 package pl.ebookstore.app.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.ebookstore.app.model.Address;
-import pl.ebookstore.app.model.NewsMessagePreference;
+import pl.ebookstore.app.model.DeliveryType;
 import pl.ebookstore.app.model.Role;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Customer {
@@ -25,7 +27,7 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     private Role role;
     @Enumerated(EnumType.STRING)
-    private NewsMessagePreference newsMessagePreference;
+    private DeliveryType deliveryType;
     @OneToMany (mappedBy = "customer")
     private List <Purchase> pastPurchases;
 

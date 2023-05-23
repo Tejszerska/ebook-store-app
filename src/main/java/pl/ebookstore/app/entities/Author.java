@@ -1,6 +1,7 @@
 package pl.ebookstore.app.entities;
 
 import jdk.dynalink.linker.LinkerServices;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Author {
@@ -24,4 +26,5 @@ public class Author {
     )
     @ManyToMany
     private List<Ebook> publishedEbooks;
+
 }

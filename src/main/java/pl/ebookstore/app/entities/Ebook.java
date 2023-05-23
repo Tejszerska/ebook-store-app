@@ -1,16 +1,16 @@
 package pl.ebookstore.app.entities;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import pl.ebookstore.app.model.Format;
 import pl.ebookstore.app.model.Genre;
+import pl.ebookstore.app.model.Language;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Ebook {
@@ -29,8 +29,10 @@ public class Ebook {
     private Float purchaseCost;
     @Enumerated(EnumType.STRING)
     private Format format;
-//    private List <Language>
+    @Enumerated(EnumType.STRING)
+    private Language language;
 
-
-
+    public Ebook(String title) {
+        this.title = title;
+    }
 }

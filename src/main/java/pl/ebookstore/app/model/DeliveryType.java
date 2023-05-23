@@ -1,5 +1,5 @@
 package pl.ebookstore.app.model;
 
-public enum NewsMessagePreference {
+public enum DeliveryType {
     EMAIL, SMS, POST;
 }
