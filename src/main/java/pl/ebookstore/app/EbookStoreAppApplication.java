@@ -31,9 +31,9 @@ private final PurchaseRepository purchaseRepository;
     @PostConstruct
     public void init() {
 
-        Ebook ebook1 = new Ebook(null, "Dzieci z Bullerbyn",null, "Argon", "images/img1.jpg", "Lektura obowiązkowa, ale przyjemna", Genre.FICTION, 35.00F, 20.00F, Format.EPUB, Language.POLISH);
-        Ebook ebook2 = new Ebook(null, "Karol Lwie Serce", null, "Hel", "images/img2.jpg", "Fantastyczna przygoda w zaświatach", Genre.FANTASY, 40.00F, 25.00F, Format.MOBI, Language.POLISH);
-        Ebook ebook3 = new Ebook(null, "Ronya Córka Rozbójnika", null, "Ozon", "images/default.jpg", "Przygody dorastającej dziewczynki", Genre.ADVENTURE, 25.00F, 10.00F, Format.PDF, Language.POLISH);
+        Ebook ebook1 = new Ebook(null, "Dzieci z Bullerbyn",null, "Argon", "img1.jpg", "Lektura obowiązkowa, ale przyjemna", Genre.FICTION, 35.00F, 20.00F, Format.EPUB, Language.POLISH);
+        Ebook ebook2 = new Ebook(null, "Karol Lwie Serce", null, "Hel", "img2.jpg", "Fantastyczna przygoda w zaświatach", Genre.FANTASY, 40.00F, 25.00F, Format.MOBI, Language.POLISH);
+        Ebook ebook3 = new Ebook(null, "Ronya Córka Rozbójnika", null, "Ozon", "img3.jpg", "Przygody dorastającej dziewczynki", Genre.ADVENTURE, 25.00F, 10.00F, Format.PDF, Language.POLISH);
 
         ebookRepository.save(ebook1);
         ebookRepository.save(ebook2);

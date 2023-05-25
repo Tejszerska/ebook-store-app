@@ -15,13 +15,13 @@ import java.util.List;
 @Setter
 public class Ebook {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     @ManyToMany (mappedBy = "publishedEbooks")
     private List<Author> authors;
     private String publisher;
-    private String coverUrl; //@TODO zapytać R.
+    private String coverUrl;
     private String description;
     @Enumerated(EnumType.STRING)
     private Genre genre;

@@ -18,7 +18,7 @@ import java.util.List;
 @Setter
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
     private String password; //@TODO zapytać R.
@@ -30,7 +30,4 @@ public class Customer {
     private DeliveryType deliveryType;
     @OneToMany (mappedBy = "customer")
     private List <Purchase> pastPurchases;
-
-
-
 }

@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.ebookstore.app.entities.Author;
 import pl.ebookstore.app.entities.Ebook;
 
-import pl.ebookstore.app.model.Format;
-import pl.ebookstore.app.model.Genre;
-import pl.ebookstore.app.model.Language;
+import pl.ebookstore.app.model.dtos.EbookDto;
 import pl.ebookstore.app.service.EbookService;
 
 import java.util.ArrayList;
@@ -20,14 +18,18 @@ import java.util.List;
 @Controller
 @Slf4j
 @RequiredArgsConstructor
+@RequestMapping("/ebooks")
 public class EbookController {
     private final EbookService ebookService;
 
-@GetMapping("/ebooks")
+@GetMapping
     public String ebook(Model model){
-    // tu dobrać się do bazy danych @TODO Rafał pokaze na zajęciach 25.05
-    model.addAttribute("ebooks", ebooks);
-    model.addAttribute("newEbook", new Ebook());
+
+    List<EbookDto> ebooksFromDb = ebookService.getEbooks();
+
+    model.addAttribute("ebooks", ebooksFromDb);
+//    model.addAttribute("newEbook", new Ebook());
+    return "ebooks";
 }
 
 }
