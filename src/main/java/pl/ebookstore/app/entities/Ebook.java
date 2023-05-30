@@ -1,9 +1,9 @@
 package pl.ebookstore.app.entities;
 
 import lombok.*;
-import pl.ebookstore.app.model.Format;
-import pl.ebookstore.app.model.Genre;
-import pl.ebookstore.app.model.Language;
+import pl.ebookstore.app.model.enums.Format;
+import pl.ebookstore.app.model.enums.Genre;
+import pl.ebookstore.app.model.enums.Language;
 
 import javax.persistence.*;
 import java.util.List;
@@ -34,5 +34,8 @@ public class Ebook {
 
     public Ebook(String title) {
         this.title = title;
+    }
+
+    public Ebook(Long id, String title, List<Author> authors, String coverUrl, String description, Genre genre, Float sellingPrice, Format format, Language language) {
     }
 }

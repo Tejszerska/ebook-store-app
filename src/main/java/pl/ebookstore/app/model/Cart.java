@@ -1,6 +1,6 @@
 package pl.ebookstore.app.model;
 
-import pl.ebookstore.app.entities.Ebook;
+import pl.ebookstore.app.model.enums.DeliveryType;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;

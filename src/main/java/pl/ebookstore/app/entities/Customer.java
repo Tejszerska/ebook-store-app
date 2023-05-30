@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.ebookstore.app.model.Address;
-import pl.ebookstore.app.model.DeliveryType;
-import pl.ebookstore.app.model.Role;
+import pl.ebookstore.app.model.enums.DeliveryType;
+import pl.ebookstore.app.model.enums.Role;
 
 import javax.persistence.*;
 import java.util.List;

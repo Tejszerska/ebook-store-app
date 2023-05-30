@@ -26,14 +26,15 @@
                         <h5 class="card-title" th:text="${ebook.title}">Ebook title</h5>
                         <h6 class="card-subtitle mb-2 text-muted" th:text="${ebook.genre}">Ebook genre</h6>
                         <a th:href="@{/ebooks/details/__${ebook.id}__}">
-                            <img th:src="@{/covers/__${ebook.coverUrl}__}"/> <!--  class="card-img-top" alt="..."-->
+                            <img th:src="@{/uploads/__${ebook.coverUrl}__}" width="80%"/>
+                            <!--  class="card-img-top" alt="..."-->
                         </a>
                         <p class="card-text" th:text="${ebook.description}">Ebooks description</p>
                         <div class="container">
                             <div class="row">
                                 <a href="#" class="btn btn-primary col-6">Add to cart</a>
                                 <h6 class="mx-auto" th:text="${ebook.sellingPrice} + 'zł'">Price</h6>
-                                jak zmienić do dwóch miejsc po przecinku? -> RAFAŁŁ
+                                <!--                                zmienić wyświetlanie ceny na format 15.00-->
 
                             </div>
                         </div>

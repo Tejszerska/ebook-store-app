@@ -8,6 +8,7 @@ import pl.ebookstore.app.entities.Customer;
 import pl.ebookstore.app.entities.Ebook;
 import pl.ebookstore.app.entities.Purchase;
 import pl.ebookstore.app.model.*;
+import pl.ebookstore.app.model.enums.*;
 import pl.ebookstore.app.repository.AuthorRepository;
 import pl.ebookstore.app.repository.CustomerRepository;
 import pl.ebookstore.app.repository.EbookRepository;

@@ -4,12 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.ebookstore.app.entities.Author;
-import pl.ebookstore.app.model.Format;
-import pl.ebookstore.app.model.Genre;
-import pl.ebookstore.app.model.Language;
+import pl.ebookstore.app.model.enums.Format;
+import pl.ebookstore.app.model.enums.Genre;
+import pl.ebookstore.app.model.enums.Language;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import java.util.List;
 @Data
 @AllArgsConstructor

@@ -28,7 +28,7 @@ public class EbookController {
     List<EbookDto> ebooksFromDb = ebookService.getEbooks();
 
     model.addAttribute("ebooks", ebooksFromDb);
-//    model.addAttribute("newEbook", new Ebook());
+    model.addAttribute("newEbook", new Ebook());
     return "ebooks";
 }
 
