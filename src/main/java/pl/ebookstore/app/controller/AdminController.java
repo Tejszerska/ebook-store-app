@@ -32,7 +32,7 @@ public class AdminController {
     public String addEbook(EbookAdminDto ebookAdminDto, @RequestParam("cover") MultipartFile file){
         ebookAdminDto.setCoverUrl(file.getOriginalFilename());
         ebookService.addEbook(ebookAdminDto, file);
-        return "reedirect:/admin/panel";
+        return "redirect:/admin/panel";
     }
 
 }

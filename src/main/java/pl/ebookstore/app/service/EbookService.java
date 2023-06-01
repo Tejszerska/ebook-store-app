@@ -25,15 +25,16 @@ private final EbookRepository ebookRepository;
 
     public List<EbookDto> getEbooks() {
         return ebookRepository.findAll().stream()
-                .map( e  -> new EbookDto(e.getId(), e.getTitle(),e.getAuthors(), e.getCoverUrl(), e.getDescription(),
-                        e.getGenre(), e.getSellingPrice(), e.getFormat(), e.getLanguage()))
+                .map( e  -> new EbookDto(e.getId(), e.getTitle(), e.getAuthors(), e.getPublisher(), e.getCoverUrl(), e.getDescription(), e.getGenre(), e.getSellingPrice(), e.getFormat(), e.getLanguage()))
                 .toList();
+
     }
 
     public void addEbook(EbookAdminDto ebookAdminDto, MultipartFile file) {
-        Ebook ebook = new Ebook(ebookAdminDto.getId(), ebookAdminDto.getTitle(), ebookAdminDto.getAuthors(), ebookAdminDto.getCoverUrl(), ebookAdminDto.getDescription(), ebookAdminDto.getGenre(),ebookAdminDto.getSellingPrice() , ebookAdminDto.getFormat(), ebookAdminDto.getLanguage());
-      ebook.setPublisher(ebookAdminDto.getPublisher());
+        Ebook ebook = new Ebook(ebookAdminDto.getId(), ebookAdminDto.getTitle(), ebookAdminDto.getAuthors(), ebookAdminDto.getPublisher(), ebookAdminDto.getCoverUrl(), ebookAdminDto.getDescription(), ebookAdminDto.getGenre(), ebookAdminDto.getSellingPrice(), ebookAdminDto.getFormat(), ebookAdminDto.getLanguage());
+
       ebook.setPurchaseCost(ebookAdminDto.getPurchaseCost());
+      ebookRepository.save(ebook);
      coverUpload(file);
     }
 

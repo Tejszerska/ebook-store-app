@@ -18,8 +18,7 @@ public class Ebook {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    @ManyToMany (mappedBy = "publishedEbooks")
-    private List<Author> authors;
+    private String authors;
     private String publisher;
     private String coverUrl;
     private String description;
@@ -36,6 +35,6 @@ public class Ebook {
         this.title = title;
     }
 
-    public Ebook(Long id, String title, List<Author> authors, String coverUrl, String description, Genre genre, Float sellingPrice, Format format, Language language) {
+    public Ebook(Long id, String title, String authors, String publisher, String coverUrl, String description, Genre genre, Float sellingPrice, Format format, Language language) {
     }
 }
