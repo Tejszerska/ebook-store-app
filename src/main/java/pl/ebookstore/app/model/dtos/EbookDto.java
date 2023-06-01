@@ -19,6 +19,7 @@ public class EbookDto {
     private String description;
     private Genre genre;
     private Float sellingPrice;
+    private Float purchaseCost;
     private Format format;
     private Language language;
 

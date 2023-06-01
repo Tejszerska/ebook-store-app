@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.web.multipart.MultipartFile;
 import pl.ebookstore.app.entities.Ebook;
-import pl.ebookstore.app.model.dtos.EbookAdminDto;
 import pl.ebookstore.app.model.dtos.EbookDto;
 import pl.ebookstore.app.repository.EbookRepository;
 
@@ -25,16 +24,31 @@ private final EbookRepository ebookRepository;
 
     public List<EbookDto> getEbooks() {
         return ebookRepository.findAll().stream()
-                .map( e  -> new EbookDto(e.getId(), e.getTitle(), e.getAuthors(), e.getPublisher(), e.getCoverUrl(), e.getDescription(), e.getGenre(), e.getSellingPrice(), e.getFormat(), e.getLanguage()))
+                .map( e  -> new EbookDto(e.getId(), e.getTitle(), e.getAuthors(), e.getPublisher(), e.getCoverUrl(), e.getDescription(), e.getGenre(), e.getSellingPrice(), e.getPurchaseCost(), e.getFormat(), e.getLanguage()))
                 .toList();
 
     }
 
-    public void addEbook(EbookAdminDto ebookAdminDto, MultipartFile file) {
-        Ebook ebook = new Ebook(ebookAdminDto.getId(), ebookAdminDto.getTitle(), ebookAdminDto.getAuthors(), ebookAdminDto.getPublisher(), ebookAdminDto.getCoverUrl(), ebookAdminDto.getDescription(), ebookAdminDto.getGenre(), ebookAdminDto.getSellingPrice(), ebookAdminDto.getFormat(), ebookAdminDto.getLanguage());
+    public void addEbook(EbookDto ebookDto, MultipartFile file) {
+//        Ebook ebook2 = new Ebook(ebookDto.getId(), ebookDto.getTitle(), ebookDto.getAuthors(), ebookDto.getPublisher(),
+//        ebookDto.getCoverUrl(), ebookDto.getDescription(), ebookDto.getGenre(), ebookDto.getSellingPrice(),
+//        ebookDto.getFormat(), ebookDto.getLanguage());
 
-      ebook.setPurchaseCost(ebookAdminDto.getPurchaseCost());
+
+        Ebook ebook = new Ebook();
+      ebook.setPurchaseCost(ebookDto.getPurchaseCost());
+      ebook.setTitle(ebookDto.getTitle());
+      ebook.setId(ebookDto.getId());
+      ebook.setAuthors(ebookDto.getAuthors());
+      ebook.setPublisher(ebookDto.getPublisher());
+      ebook.setCoverUrl(ebookDto.getCoverUrl());
+      ebook.setDescription(ebookDto.getDescription());
+      ebook.setGenre(ebookDto.getGenre());
+      ebook.setSellingPrice(ebookDto.getSellingPrice());
+      ebook.setFormat(ebookDto.getFormat());
+      ebook.setLanguage(ebookDto.getLanguage());
       ebookRepository.save(ebook);
+//      ebookRepository.save(ebook2);
      coverUpload(file);
     }
 

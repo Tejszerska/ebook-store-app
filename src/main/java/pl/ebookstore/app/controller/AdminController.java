@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import pl.ebookstore.app.model.dtos.EbookAdminDto;
 import pl.ebookstore.app.model.dtos.EbookDto;
 import pl.ebookstore.app.service.EbookService;
 
@@ -22,16 +21,16 @@ public class AdminController {
     @GetMapping
     @RequestMapping("/panel")
     public String getAddEbookView(Model model){
-        model.addAttribute("newEbook", new EbookAdminDto());
+        model.addAttribute("newEbook", new EbookDto());
         return "add-ebook";
     }
 
 
     @PostMapping
     @RequestMapping("/panel/add")
-    public String addEbook(EbookAdminDto ebookAdminDto, @RequestParam("cover") MultipartFile file){
-        ebookAdminDto.setCoverUrl(file.getOriginalFilename());
-        ebookService.addEbook(ebookAdminDto, file);
+    public String addEbook(EbookDto ebookDto, @RequestParam("cover") MultipartFile file){
+        ebookDto.setCoverUrl(file.getOriginalFilename());
+        ebookService.addEbook(ebookDto, file);
         return "redirect:/admin/panel";
     }
 
