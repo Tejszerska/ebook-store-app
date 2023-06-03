@@ -17,10 +17,10 @@ public class EbookDto {
     private String publisher;
     private String coverUrl;
     private String description;
-    private Genre genre;
+    private String genre;
     private Float sellingPrice;
     private Float purchaseCost;
-    private Format format;
-    private Language language;
+    private String format;
+    private String language;
 
 }

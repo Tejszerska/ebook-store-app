@@ -39,16 +39,6 @@
                 <input type="text" class="form-control" id="publisher" th:field="*{publisher}">
             </div>
             <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <input type="text" class="form-control" id="description" th:field="*{description}">
-            </div>
-            <div class="mb-3">
-                <label for="genre" class="form-label">Genre</label>
-                <input type="text" class="form-control" id="genre" th:field="*{genre}">
-                <!-- do enuma select w forularzu powinien być -->
-            </div>
-
-            <div class="mb-3">
                 <label for="sellingPrice" class="form-label">Selling Price</label>
                 <input type="text" class="form-control" id="sellingPrice" th:field="*{sellingPrice}">
             </div>
@@ -57,15 +47,35 @@
                 <label for="purchaseCost" class="form-label">Purchase Cost</label>
                 <input type="text" class="form-control" id="purchaseCost" th:field="*{purchaseCost}">
             </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" id="description" th:field="*{description}">
+            </div>
+
+            <div class="mb-3">
+                <label for="genre" class="form-label">Genre</label>
+                <select class="form-control" th:field="*{genre}" id = "genre">
+                    <option th:value="${0}">Select genre</option>
+                    <option th:each="genreSelected : ${genres}" th:text="${genreSelected}" th:value="${genreSelected}">
+                </select>
+            </div>
+
+
 
             <div class="mb-3">
                 <label for="format" class="form-label">Format</label>
-                <input type="text" class="form-control" id="format" th:field="*{format}">
+                <select class="form-control" id="format" th:field="*{format}">
+                    <option th:value="${0}">Select format</option>
+                    <option th:each="formatSelected : ${formats}" th:text="${formatSelected}" th:value="${formatSelected}">
+                </select>
             </div>
 
             <div class="mb-3">
                 <label for="language" class="form-label">Language</label>
-                <input type="text" class="form-control" id="language" th:field="*{language}">
+                <select class="form-control" id="language" th:field="*{language}">
+                    <option th:value="${0}">Select language</option>
+                    <option th:each="languageSelected : ${languages}" th:text="${languageSelected}" th:value="${languageSelected}">
+                </select>
             </div>
 
             <div class="mb-3">
