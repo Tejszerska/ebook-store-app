@@ -13,10 +13,12 @@
     </style>
 </head>
 <body>
-<nav class="navbar custom-navbar ">
+<nav class="navbar custom-navbar bg-success bg-gradient">
     <div class="container-fluid">
-        <a class="navbar-brand">Ebook Store</a>
-
+        <a class="navbar-brand text-white">EBOOKSTORE</a>
+        <a th:href="@{/cart}" class="btn btn-outline-light" type="submit">Cart
+            <span class = "badge" th:text="${cartSize}"></span>
+        </a>
     </div>
 </nav>
 

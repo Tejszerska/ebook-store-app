@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.ebookstore.app.ShoppingCart;
 import pl.ebookstore.app.entities.Ebook;
 
 import pl.ebookstore.app.model.dtos.EbookDto;
@@ -18,15 +19,24 @@ import java.util.List;
 @RequestMapping("/ebooks")
 public class EbookController {
     private final EbookService ebookService;
+    private final ShoppingCart shoppingCart;
 
 @GetMapping
     public String ebook(Model model){
-
     List<EbookDto> ebooksFromDb = ebookService.getEbooks();
-
     model.addAttribute("ebooks", ebooksFromDb);
     model.addAttribute("newEbook", new Ebook());
+    int cartSize = shoppingCart.getCartSize();
+    model.addAttribute("cartSize", cartSize);
     return "ebooks";
+}
+
+@GetMapping
+    @RequestMapping("/details/{ebookId}")
+    public String ebookDetails (Model model, @PathVariable Long ebookId){
+    EbookDto ebookById = ebookService.getEbookById(ebookId);
+    model.addAttribute("ebookById", ebookById);
+    return "ebook-details";
 }
 
 }

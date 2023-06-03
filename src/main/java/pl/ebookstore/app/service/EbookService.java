@@ -66,4 +66,9 @@ private final EbookRepository ebookRepository;
             log.error(e.getMessage());
         }
     }
+
+    public EbookDto getEbookById(Long ebookId) {
+        Ebook ebook = ebookRepository.findById(ebookId).orElseThrow(() -> new IllegalArgumentException(ebookId + ": there is no ebook with that ID in the database."));
+        return new EbookDto(ebook.getId(), ebook.getTitle(), ebook.getAuthors(), ebook.getPublisher(), ebook.getCoverUrl(), ebook.getDescription(), ebook.getGenre().toString(), ebook.getSellingPrice(), ebook.getPurchaseCost(), ebook.getFormat().toString(), ebook.getLanguage().toString());
+    }
 }

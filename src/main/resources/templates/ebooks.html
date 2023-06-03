@@ -5,13 +5,78 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
     <title>Welcome to The Ebook Store</title>
 </head>
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-success bg-gradient">
+    <div class="container-fluid">
+        <a th:href="@{/ebooks}" class="navbar-brand text-white">EBOOKSTORE</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/ebooks}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/admin/panel}">Add ebooks</a>
+                </li>
+
+            </ul>
+
+        <a th:href="@{/cart}" class="btn btn-outline-light" type="submit">Cart
+            <span class = "badge" th:text="${cartSize}"></span>
+        </a>
+    </div>
+</nav>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
 <h1>Ebook Store App</h1>
 
 <div class="container">
@@ -30,14 +95,18 @@
                             <!--  class="card-img-top" alt="..."-->
                         </a>
                         <p class="card-text" th:text="${ebook.description}">Ebooks description</p>
-                        <div class="container">
-                            <div class="row">
-                                <a href="#" class="btn btn-primary col-6">Add to cart</a>
-                                <h6 class="mx-auto" th:text="${ebook.sellingPrice} + 'zł'">Price</h6>
-                                <!--                                zmienić wyświetlanie ceny na format 15.00-->
 
-                            </div>
-                        </div>
+
+                                <form th:action="@{/cart/add}" method="post">
+                                    <input type="hidden" name = "ebookId" th:value="${ebook.id}"/>
+
+                                    <button type="submit" style="width: 100%;" class="btn btn-primary mb-3">Add to cart</button>
+                                </form>
+                        <a th:href="@{/ebooks/details/__${ebook.id}__}"  style="width: 100%;" class="btn btn-primary mb-3">Details</a>
+
+                        <h6 class="mx-auto" th:text="${ebook.sellingPrice} + 'zł'">Price</h6>
+                                    <!--                                zmienić wyświetlanie ceny na format 15.00-->
+
 
                     </div>
                 </div>
