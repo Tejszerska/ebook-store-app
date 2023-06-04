@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.ebookstore.app.model.Address;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -23,4 +24,19 @@ public class Purchase {
     private Customer customer;
     private BigDecimal totalCost;
     private LocalDate orderDate;
+    private Address address; // używamy gdy kupno bez logowania/rejestracji
+
+    public Purchase(Long id, Customer customer, BigDecimal totalCost, LocalDate orderDate) {
+        this.id = id;
+        this.customer = customer;
+        this.totalCost = totalCost;
+        this.orderDate = orderDate;
+    }
+
+    public Purchase(Long id, BigDecimal totalCost, LocalDate orderDate, Address address) {
+        this.id = id;
+        this.totalCost = totalCost;
+        this.orderDate = orderDate;
+        this.address = address;
+    }
 }

@@ -5,12 +5,18 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import pl.ebookstore.app.ShoppingCart;
 import pl.ebookstore.app.entities.Ebook;
 
+import pl.ebookstore.app.model.dtos.CustomerDto;
 import pl.ebookstore.app.model.dtos.EbookDto;
+import pl.ebookstore.app.model.enums.Format;
+import pl.ebookstore.app.model.enums.Genre;
+import pl.ebookstore.app.model.enums.Language;
 import pl.ebookstore.app.service.EbookService;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -38,5 +44,6 @@ public class EbookController {
     model.addAttribute("ebookById", ebookById);
     return "ebook-details";
 }
+
 
 }
