@@ -25,7 +25,7 @@ public class AdminController {
     private final EbookService ebookService;
 
     @GetMapping
-    @RequestMapping("/panel")
+    @RequestMapping("/panel/add-view")
     public String getAddEbookView(Model model){
         model.addAttribute("newEbook", new EbookDto());
         List<String> genreList = Arrays.stream(Genre.values()).map(Enum::name).toList();

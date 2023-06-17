@@ -1,0 +1,25 @@
+** WESJA I **
+Panel administracyjny
+- widok panelu 
+- podgląd / lista zamówień 
+- wyszukiwarka zamówień
+- podgląd / lista ebooków + możliwość edycji
+
+Panel klienta
+- lista poprzednich zamówień
+
+Lista ebooków (strona główna)
+- poprawić wygląd kafelków 
+- poprawić format ceny na 00,00
+- ogólna estetyka
+
+Szczegółowy podgląd ebooka
+- dodać przycisk "dodaj do koszyka"
+- ogólna estetyka
+
+!!! Testy do wszystkiego !!!
+
+** WERSJA II **
+1. Refactor Customer -> User / coś podobnego
+2. Zmiana bazy danych na MySQL
+3. Thymeleaf -> Angular

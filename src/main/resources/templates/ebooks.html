@@ -12,10 +12,9 @@
 
 <div th:insert="fragments/nav-bar::nav"></div>
 
-
-<h1>Ebook Store App</h1>
-
 <div class="container">
+    <h1>Ebook Store App</h1>
+
     <div class="row">
         <th:block th:each="ebook: ${ebooks}">
             <div class="col-4">
@@ -28,7 +27,7 @@
                         <h6 class="card-subtitle mb-2 text-muted" th:text="${ebook.genre}">Ebook genre</h6>
                         <a th:href="@{/ebooks/details/__${ebook.id}__}">
                             <img th:src="@{/uploads/__${ebook.coverUrl}__}" width="80%"/>
-                            <!--  class="card-img-top" alt="..."-->
+
                         </a>
                         <p class="card-text" th:text="${ebook.description}">Ebooks description</p>
 
