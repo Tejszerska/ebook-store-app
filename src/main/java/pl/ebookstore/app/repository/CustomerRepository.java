@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 import pl.ebookstore.app.entities.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
+    Customer findCustomerByEmail(String email);
 }

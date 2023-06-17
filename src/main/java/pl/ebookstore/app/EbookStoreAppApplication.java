@@ -39,16 +39,18 @@ private final PurchaseRepository purchaseRepository;
         ebookRepository.save(ebook3);
 
 
-        Customer customer1 = new Customer(null, "kotek@gmail.com", "masło", new Address("Jan", "Kowalski", "Polska", "Warszawa", "Gołdapska", "01-500"), Role.USER, DeliveryType.EMAIL, null);
-        Customer customer2 = new Customer(null, "piesek@gmail.com", "adfsasfd", new Address("Karolina", "Makowiecka", "Polska", "Olecko", "Stadionowa", "19-400"), Role.USER, DeliveryType.SMS, null);
-        Customer customer3 = new Customer(null, "kotpyrymykyryek@gmail.com", "ma1234SAsło", new Address("Edyta", "Kowal", "Polska", "Ełk", "Sportowa", "19-300"), Role.USER, DeliveryType.EMAIL, null);
+        Customer customer1 = new Customer(null, "kotek@gmail.com", "masło", new Address("Jan", "Kowalski", "Polska", "Warszawa", "Gołdapska", "01-500"), Role.USER,  null);
+        Customer customer2 = new Customer(null, "piesek@gmail.com", "adfsasfd", new Address("Karolina", "Makowiecka", "Polska", "Olecko", "Stadionowa", "19-400"), Role.USER, null);
+        Customer customer3 = new Customer(null, "kotpyrymykyryek@gmail.com", "ma1234SAsło", new Address("Edyta", "Kowal", "Polska", "Ełk", "Sportowa", "19-300"), Role.USER, null);
+        Customer customerAdmin = new Customer(null, "admin@gmail.com", "$2a$12$PO6bTMreR.UXUHBDLk.SMuj7JQi0OJjmURL7WzQOTV38EYLTUgBrW", new Address("Edyta", "Kowal", "Polska", "Ełk", "Sportowa", "19-300"), Role.ADMIN, null);
         customerRepository.save(customer1);
         customerRepository.save(customer2);
         customerRepository.save(customer3);
+        customerRepository.save(customerAdmin);
 
-        Purchase purchase1 = new Purchase(null, customer1, BigDecimal.valueOf(15000), LocalDate.now());
-        Purchase purchase2 = new Purchase(null, customer2, BigDecimal.valueOf(200), LocalDate.now());
-        Purchase purchase3 = new Purchase(null, customer3, BigDecimal.valueOf(100), LocalDate.now());
+        Purchase purchase1 = new Purchase(null, customer1, BigDecimal.valueOf(15000), LocalDate.now(), DeliveryType.EMAIL);
+        Purchase purchase2 = new Purchase(null, customer2, BigDecimal.valueOf(200), LocalDate.now(), DeliveryType.EMAIL);
+        Purchase purchase3 = new Purchase(null, customer3, BigDecimal.valueOf(100), LocalDate.now(), DeliveryType.SMS);
 
 
         purchaseRepository.save(purchase1);

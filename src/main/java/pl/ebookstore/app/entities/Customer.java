@@ -16,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,8 +27,7 @@ public class Customer {
     private Address address;
     @Enumerated(EnumType.STRING)
     private Role role;
-    @Enumerated(EnumType.STRING)
-    private DeliveryType deliveryType;
+
     @OneToMany (mappedBy = "customer")
     private List <Purchase> pastPurchases;
 }
