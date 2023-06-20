@@ -10,6 +10,7 @@ import pl.ebookstore.app.model.enums.DeliveryType;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -25,8 +26,8 @@ public class Purchase {
     private Customer customer;
     private BigDecimal totalCost;
     private LocalDate orderDate;
-//    private Address address; // używamy gdy kupno bez logowania/rejestracji
     @Enumerated(EnumType.STRING)
     private DeliveryType deliveryType;
+//    private List<Ebook> singlePurchase;
 
 }

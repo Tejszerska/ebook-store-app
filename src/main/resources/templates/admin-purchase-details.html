@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Administration panel</title>
+    <link th:href="@{/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/style.css}" rel="stylesheet">
+
+</head>
+<body>
+<div th:insert="fragments/nav-bar::nav"></div>
+
+<div class="container" style="margin-top:100px;">
+    <h2>Details of order no: <span th:text="${purchaseById.getId()}"></span></h2>
+
+    <table class="table">
+        <tr>
+            <td >Email:</td>
+            <td th:text="${purchaseById.getCustomer().getEmail()}"></td>
+        </tr>
+
+        <tr>
+            <td >Address:</td>
+            <td th:text="${purchaseById.getCustomer().getAddress()}"></td>
+        </tr>
+
+        <tr>
+            <td >Purchased products::</td>
+            <td ><h4>@TODO okodować</h4>  </td>
+<!--            <td th:text="${purchaseById.getCustomer()}"></td>-->
+        </tr>
+        <tr>
+            <td >Total cost:</td>
+            <td th:text="${purchaseById.getTotalCost()}"></td>
+        </tr>
+        <tr>
+            <td >Purchase date:</td>
+            <td th:text="${purchaseById.getOrderDate()}"></td>
+        </tr>
+        <tr>
+            <td >Delivery type:</td>
+            <td th:text="${purchaseById.getDeliveryType()}"></td>
+        </tr>
+
+
+    </table>
+
+
+<!--    <a th:href="@{/admin/panel/add-view}"  style="width: 100%;" class="btn btn-primary mb-3">Add ebook</a>-->
+
+<!--    <a th:href=""  style="width: 100%;" class="btn btn-primary mb-3">Show recent purchases</a>-->
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+</body>
+</html>

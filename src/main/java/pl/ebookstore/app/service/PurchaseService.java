@@ -15,7 +15,7 @@ import pl.ebookstore.app.repository.CustomerRepository;
 import pl.ebookstore.app.repository.PurchaseRepository;
 
 import java.time.LocalDate;
-import java.util.Optional;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -37,7 +37,7 @@ public class PurchaseService {
     }
 
     public void addPurchase(CustomerPurchaseDto customerPurchaseDto) {
-    //  zakup bez logowania
+        //  zakup bez logowania
         Customer customer = new Customer();
         customer.setEmail(customerPurchaseDto.getEmail());
         customer.setRole(Role.UNLOGGED);
@@ -48,12 +48,21 @@ public class PurchaseService {
         );
         customerRepository.save(customer);
 
-    Purchase purchase = new Purchase();
-    purchase.setCustomer(customer);
-    purchase.setTotalCost(shoppingCart.getTotalCost());
-    purchase.setOrderDate(LocalDate.now());
-    purchase.setDeliveryType(DeliveryType.valueOf(customerPurchaseDto.getDeliveryType()));
-    purchaseRepository.save(purchase);
+        Purchase purchase = new Purchase();
+        purchase.setCustomer(customer);
+        purchase.setTotalCost(shoppingCart.getTotalCost());
+        purchase.setOrderDate(LocalDate.now());
+        purchase.setDeliveryType(DeliveryType.valueOf(customerPurchaseDto.getDeliveryType()));
+        purchaseRepository.save(purchase);
     }
 
+    public List<PurchaseDto> getPurchases() {
+        return purchaseRepository.findAll().stream().map(p ->
+                new PurchaseDto(p.getId(), p.getCustomer(), p.getTotalCost(), p.getOrderDate(), p.getDeliveryType().toString())).toList();
+    }
+
+    public PurchaseDto getPurchaseById(Long purchaseId) {
+        Purchase purchase = purchaseRepository.findById(purchaseId).orElseThrow(() -> new IllegalArgumentException(purchaseId + " - this purchase doesn't exist in database"));
+        return new PurchaseDto(purchase.getId(), purchase.getCustomer(), purchase.getTotalCost(), purchase.getOrderDate(), purchase.getDeliveryType().toString());
+    }
 }

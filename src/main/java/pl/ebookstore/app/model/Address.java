@@ -17,4 +17,15 @@ public class Address {
     private String city;
     private String street;
     private String zipCode;
+
+
+    @Override
+    public String toString() {
+        return  "First name: " + name +
+                " , surname: " + surname +
+                " , country: " + country +
+                " , city: " + city +
+                " , street: " + street +
+                " , zipCode: " + zipCode ;
+    }
 }

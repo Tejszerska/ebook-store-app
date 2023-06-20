@@ -4,9 +4,12 @@ Panel administracyjny
 - podgląd / lista zamówień 
 - wyszukiwarka zamówień
 - podgląd / lista ebooków + możliwość edycji
+- dodać walidację ebooków
 
 Panel klienta
 - lista poprzednich zamówień
+- dodać walidację klienta
+- poprawić strone logowania, dodać logowanie na pasku nav
 
 Lista ebooków (strona główna)
 - poprawić wygląd kafelków 
@@ -16,6 +19,11 @@ Lista ebooków (strona główna)
 Szczegółowy podgląd ebooka
 - dodać przycisk "dodaj do koszyka"
 - ogólna estetyka
+
+Wózek:
+- zmnień liczbę produktów w koszyku
+- usuń produkt
+- wyczyść koszyk
 
 !!! Testy do wszystkiego !!!
 
