@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 import pl.ebookstore.app.model.Address;
 import pl.ebookstore.app.model.enums.DeliveryType;
 
@@ -28,6 +29,7 @@ public class Purchase {
     private LocalDate orderDate;
     @Enumerated(EnumType.STRING)
     private DeliveryType deliveryType;
-//    private List<Ebook> singlePurchase;
+    @OneToMany
+    private List<Ebook> purchasedEbooks;
 
 }

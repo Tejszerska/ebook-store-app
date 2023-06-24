@@ -31,6 +31,7 @@ public class Ebook {
     @Enumerated(EnumType.STRING)
     private Language language;
 
+
     public Ebook(String title) {
         this.title = title;
     }
