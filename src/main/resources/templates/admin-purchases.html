@@ -18,7 +18,8 @@
         <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">CUSTOMER'S EMAIL</th>
+            <th scope="col">CUSTOMER'S EMAIL </th>
+
             <th scope="col">TOTAL COST</th>
             <th scope="col">DATE</th>
         </tr>
@@ -26,10 +27,10 @@
         <tbody>
         <th:block th:each="purchase: ${purchases}">
         <tr>
-            <td><span th:text="${purchase.getId()}"> id </span></td>
-            <td><span th:text="${purchase.getCustomer().getEmail()}"> email </span></td>
-            <td><span th:text="${purchase.getTotalCost()}"> cost </span></td>
-            <td><span th:text="${purchase.getOrderDate()}"> date </span></td>
+            <td><span th:text="${purchase.id}"> id </span></td>
+            <td><span th:text="${purchase.customer.email}"> email </span></td>
+            <td><span th:text="${purchase.totalCost}"> cost </span></td>
+            <td><span th:text="${purchase.orderDate}"> date </span></td>
             <td><a th:href="@{purchases/__${purchase.id}__}"  style="width: 100%;" class="btn btn-primary mb-3">Details</a></td>
         </tr>
         </th:block>

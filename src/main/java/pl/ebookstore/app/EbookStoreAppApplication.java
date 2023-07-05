@@ -52,7 +52,7 @@ private final PurchaseRepository purchaseRepository;
         List<Ebook> purchased1= new ArrayList<>();
         purchased1.add(ebook1);
         List<Ebook> purchased2= List.of(ebook3, ebook2);
-//        List<Ebook> purchased3= List.of(ebook2);
+
 
         Purchase purchase1 = new Purchase(null, customer1, BigDecimal.valueOf(15000), LocalDate.now(), DeliveryType.EMAIL,purchased1);
         Purchase purchase2 = new Purchase(null, customer2, BigDecimal.valueOf(200), LocalDate.now(), DeliveryType.EMAIL, purchased2);

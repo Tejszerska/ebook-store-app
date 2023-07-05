@@ -31,7 +31,7 @@
                         </a>
                         <p class="card-text" th:text="${ebook.description}">Ebooks description</p>
 
-
+                        <h6 class="mx-auto" th:text="${ebook.sellingPrice} + '0 zł'">Price</h6>
                                 <form th:action="@{/cart/add}" method="post">
                                     <input type="hidden" name = "ebookId" th:value="${ebook.id}"/>
 
@@ -39,8 +39,8 @@
                                 </form>
                         <a th:href="@{/ebooks/details/__${ebook.id}__}"  style="width: 100%;" class="btn btn-primary mb-3">Details</a>
 
-                        <h6 class="mx-auto" th:text="${ebook.sellingPrice} + 'zł'">Price</h6>
-                                    <!--             @TODO                   zmienić wyświetlanie ceny na format 15.00-->
+
+
 
                     </div>
                 </div>

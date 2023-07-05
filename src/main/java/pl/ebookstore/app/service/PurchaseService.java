@@ -58,7 +58,7 @@ public class PurchaseService {
 
     public List<PurchaseDto> getPurchases() {
         return purchaseRepository.findAll().stream().map(p ->
-                new PurchaseDto(p.getId(), p.getCustomer(), p.getTotalCost(), p.getOrderDate(), p.getDeliveryType().toString())).toList();
+                new PurchaseDto(p.getId(), p.getCustomer(), p.getTotalCost(), p.getOrderDate(), p.getPurchasedEbooks().toString())).toList();
     }
 
     public PurchaseDto getPurchaseById(Long purchaseId) {
