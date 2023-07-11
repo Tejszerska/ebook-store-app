@@ -29,7 +29,7 @@ public class Purchase {
     private LocalDate orderDate;
     @Enumerated(EnumType.STRING)
     private DeliveryType deliveryType;
-    @OneToMany
+    @ManyToMany
     private List<Ebook> purchasedEbooks;
 
 }

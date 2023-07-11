@@ -30,4 +30,17 @@ public class PurchaseDto {
         this.orderDate = orderDate;
         this.deliveryType = deliveryType;
     }
+
+    @Override
+    public String toString() {
+        return "PurchaseDto{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", totalCost=" + totalCost +
+                ", orderDate=" + orderDate +
+                ", deliveryType='" + deliveryType + '\'' +
+                ", role='" + role + '\'' +
+                ", purchasedEbooks=" + purchasedEbooks +
+                '}';
+    }
 }

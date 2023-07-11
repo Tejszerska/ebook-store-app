@@ -25,11 +25,7 @@
             <td th:text="${purchaseById.getCustomer().getAddress()}"></td>
         </tr>
 
-        <tr>
-            <td >Purchased products:</td>
-<!--            <td ><h4>@TODO okodować</h4>  </td>-->
-            <td th:text="${purchaseById.getPurchasedEbooks()}"></td>
-        </tr>
+
         <tr>
             <td >Total cost:</td>
             <td th:text="${purchaseById.getTotalCost()}"></td>
@@ -45,6 +41,29 @@
 
 
     </table>
+<h3> List of purchased ebooks:</h3>
+
+    <table th:each="ebook : ${purchasedEbooks}">
+        <tr>
+            <td>Id:</td>
+            <td th:text="${ebook.id}"></td>
+
+        </tr>
+        <tr>
+            <td>Title:</td>
+            <td th:text="${ebook.title}"></td>
+        </tr>
+        <tr>
+            <td>Selling price:</td>
+            <td th:text="${ebook.sellingPrice}"></td>
+        </tr>
+        <tr>
+            <td>Purchase cost:</td>
+            <td th:text="${ebook.purchaseCost}"></td>
+        </tr>
+        <hr>
+    </table>
+
 
 
 <!--    <a th:href="@{/admin/panel/add-view}"  style="width: 100%;" class="btn btn-primary mb-3">Add ebook</a>-->

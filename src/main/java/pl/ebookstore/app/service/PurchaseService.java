@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pl.ebookstore.app.ShoppingCart;
 import pl.ebookstore.app.entities.Customer;
+import pl.ebookstore.app.entities.Ebook;
 import pl.ebookstore.app.entities.Purchase;
 import pl.ebookstore.app.model.Address;
 import pl.ebookstore.app.model.dtos.CustomerPurchaseDto;
@@ -12,10 +13,14 @@ import pl.ebookstore.app.model.dtos.PurchaseDto;
 import pl.ebookstore.app.model.enums.DeliveryType;
 import pl.ebookstore.app.model.enums.Role;
 import pl.ebookstore.app.repository.CustomerRepository;
+import pl.ebookstore.app.repository.EbookRepository;
 import pl.ebookstore.app.repository.PurchaseRepository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +28,7 @@ import java.util.List;
 public class PurchaseService {
     private final CustomerRepository customerRepository;
     private final PurchaseRepository purchaseRepository;
+    private final EbookRepository ebookRepository;
     private final ShoppingCart shoppingCart;
 
     public void addPurchase(PurchaseDto purchaseDto) {
@@ -53,7 +59,13 @@ public class PurchaseService {
         purchase.setTotalCost(shoppingCart.getTotalCost());
         purchase.setOrderDate(LocalDate.now());
         purchase.setDeliveryType(DeliveryType.valueOf(customerPurchaseDto.getDeliveryType()));
+
+// @TODO to nie działa, bo przed zapisaniem purchase nie wydobędę jego id -> inna metoda do bieżącego zamawiania, czyli wyciąganie z wózka
+
+
+        purchase.setPurchasedEbooks(getEbooksFromPastPurchases(purchase.getId()));
         purchaseRepository.save(purchase);
+
     }
 
     public List<PurchaseDto> getPurchases() {
@@ -64,5 +76,13 @@ public class PurchaseService {
     public PurchaseDto getPurchaseById(Long purchaseId) {
         Purchase purchase = purchaseRepository.findById(purchaseId).orElseThrow(() -> new IllegalArgumentException(purchaseId + " - this purchase doesn't exist in database"));
         return new PurchaseDto(purchase.getId(), purchase.getCustomer(), purchase.getTotalCost(), purchase.getOrderDate(), purchase.getDeliveryType().toString());
+    }
+
+    public List<Ebook> getEbooksFromPastPurchases(Long purchaseId) {
+       return purchaseRepository.findById(purchaseId).map(p -> p.getPurchasedEbooks()).get().stream().toList();
+    }
+
+    public List<Ebook> getEbooksFromCart(ShoppingCart shoppingCart){
+        return shoppingCart.getCartItems().stream().map(c -> ebookRepository.findById(c.getEbookDto().getId()).get()).collect(Collectors.toList());
     }
 }

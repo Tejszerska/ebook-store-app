@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import pl.ebookstore.app.entities.Purchase;
+import pl.ebookstore.app.entities.Ebook;
 import pl.ebookstore.app.model.dtos.EbookDto;
 import pl.ebookstore.app.model.dtos.PurchaseDto;
 import pl.ebookstore.app.model.enums.Format;
@@ -31,6 +31,8 @@ public class AdminController {
 public String purchaseDetails(Model model, @PathVariable Long purchaseId){
     PurchaseDto purchaseById = purchaseService.getPurchaseById(purchaseId);
     model.addAttribute("purchaseById", purchaseById);
+   List<Ebook> purchasedEbooks = purchaseService.getEbooksFromPastPurchases(purchaseById.getId());
+   model.addAttribute("purchasedEbooks", purchasedEbooks);
     return "admin-purchase-details";
     }
 
