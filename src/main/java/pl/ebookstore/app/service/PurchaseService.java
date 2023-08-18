@@ -60,10 +60,8 @@ public class PurchaseService {
         purchase.setOrderDate(LocalDate.now());
         purchase.setDeliveryType(DeliveryType.valueOf(customerPurchaseDto.getDeliveryType()));
 
-// @TODO to nie działa, bo przed zapisaniem purchase nie wydobędę jego id -> inna metoda do bieżącego zamawiania, czyli wyciąganie z wózka
-
-
-        purchase.setPurchasedEbooks(getEbooksFromPastPurchases(purchase.getId()));
+//        purchase.setPurchasedEbooks(getEbooksFromPastPurchases(purchase.getId()));
+        purchase.setPurchasedEbooks(getEbooksFromCart(shoppingCart));
         purchaseRepository.save(purchase);
 
     }
@@ -84,5 +82,10 @@ public class PurchaseService {
 
     public List<Ebook> getEbooksFromCart(ShoppingCart shoppingCart){
         return shoppingCart.getCartItems().stream().map(c -> ebookRepository.findById(c.getEbookDto().getId()).get()).collect(Collectors.toList());
+    }
+
+    public PurchaseDto getPurchaseByKeyword(String keyword) {
+//        purchaseRepository.findById();
+        return null;
     }
 }

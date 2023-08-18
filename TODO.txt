@@ -1,8 +1,13 @@
 ** WESJA I **
 Panel administracyjny
-- widok panelu 
-- podgląd / lista zamówień 
+- widok panelu XX
+- podgląd / lista zamówień  XX
 - wyszukiwarka zamówień
+* search bar w html XX
+* metoda wyszukiwania w serwisie
+* kontroler -> zaczęty, nieprzetestowany
+
+* połaczenie html z kontrolerem przez thymeleaf
 - podgląd / lista ebooków + możliwość edycji
 - dodać walidację ebooków
 
@@ -13,7 +18,7 @@ Panel klienta
 
 Lista ebooków (strona główna)
 - poprawić wygląd kafelków 
-- poprawić format ceny na 00,00
+- poprawić format ceny na 00,00 XXX
 - ogólna estetyka
 
 Szczegółowy podgląd ebooka

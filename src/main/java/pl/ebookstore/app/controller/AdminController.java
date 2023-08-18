@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.ebookstore.app.entities.Ebook;
+import pl.ebookstore.app.model.dtos.CustomerPurchaseDto;
 import pl.ebookstore.app.model.dtos.EbookDto;
 import pl.ebookstore.app.model.dtos.PurchaseDto;
 import pl.ebookstore.app.model.enums.Format;
@@ -27,7 +28,7 @@ public class AdminController {
 
 
 @GetMapping
-@RequestMapping("/panel/purchases/{purchaseId}")
+@RequestMapping("/purchases/{purchaseId}")
 public String purchaseDetails(Model model, @PathVariable Long purchaseId){
     PurchaseDto purchaseById = purchaseService.getPurchaseById(purchaseId);
     model.addAttribute("purchaseById", purchaseById);
@@ -37,24 +38,36 @@ public String purchaseDetails(Model model, @PathVariable Long purchaseId){
     }
 
     @GetMapping
-    @RequestMapping("/panel/purchases")
+    @RequestMapping("/purchases")
     public String getPurchaseList(Model model) {
         List<PurchaseDto> purchases = purchaseService.getPurchases();
         model.addAttribute("purchases", purchases);
         return "admin-purchases";
     }
 
+    //// to będzie wyszukiwanie zamówień po dowolnym keyword
+    @GetMapping
+    @RequestMapping("/purchases/search/{keyword}")
+    public String purchaseSearch(Model model, @PathVariable String keyword){
+        PurchaseDto purchaseByKeyword = purchaseService.getPurchaseByKeyword(keyword);
+        model.addAttribute("purchaseByKeyword", purchaseByKeyword);
+//    Nie wiem czy to poniżej będzie potrzebne
+//        List<CustomerPurchaseDto> foundPurchases = purchaseService.getEbooksFromPastPurchases(purchaseById.getId());
+//        model.addAttribute("purchasedEbooks", purchasedEbooks);
+        return "admin-purchase-details";
+    }
+
 
     @PostMapping
-    @RequestMapping("/panel/add")
+    @RequestMapping("/add")
     public String addEbook(EbookDto ebookDto, @RequestParam("cover") MultipartFile file) {
         ebookDto.setCoverUrl(file.getOriginalFilename());
         ebookService.addEbook(ebookDto, file);
-        return "redirect:/admin/panel/add-view";
+        return "redirect:/admin/add-view";
     }
 
     @GetMapping
-    @RequestMapping("/panel/add-view")
+    @RequestMapping("/add-view")
     public String getAddEbookView(Model model) {
         model.addAttribute("newEbook", new EbookDto());
         List<String> genreList = Arrays.stream(Genre.values()).map(Enum::name).toList();
@@ -67,7 +80,6 @@ public String purchaseDetails(Model model, @PathVariable Long purchaseId){
     }
 
     @GetMapping
-    @RequestMapping("/panel")
     public String getMainPanelView() {
         return "admin";
     }

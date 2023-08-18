@@ -14,8 +14,8 @@
 <div class="container" style="margin-top:100px;">
     <h2>New ebook adding</h2>
     <div class="row">
-        <form th:action="@{/admin/panel/add}" th:object="${newEbook}" method="post" enctype="multipart/form-data">
-            <!--           czy dałoby się skrócić pętlą -->
+        <form th:action="@{/admin/add}" th:object="${newEbook}" method="post" enctype="multipart/form-data">
+
 
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
