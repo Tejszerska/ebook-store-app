@@ -42,6 +42,8 @@ public class EbookController {
     public String ebookDetails (Model model, @PathVariable Long ebookId){
     EbookDto ebookById = ebookService.getEbookById(ebookId);
     model.addAttribute("ebookById", ebookById);
+    int cartSize = shoppingCart.getCartSize();
+    model.addAttribute("cartSize", cartSize);
     return "ebook-details";
 }
 

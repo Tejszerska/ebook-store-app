@@ -23,6 +23,7 @@ Lista ebooków (strona główna)
 
 Szczegółowy podgląd ebooka
 - dodać przycisk "dodaj do koszyka"
+- licznik koszyka w pasku nav
 - ogólna estetyka
 
 Wózek:

@@ -84,8 +84,5 @@ public class PurchaseService {
         return shoppingCart.getCartItems().stream().map(c -> ebookRepository.findById(c.getEbookDto().getId()).get()).collect(Collectors.toList());
     }
 
-    public PurchaseDto getPurchaseByKeyword(String keyword) {
-//        purchaseRepository.findById();
-        return null;
-    }
+
 }
