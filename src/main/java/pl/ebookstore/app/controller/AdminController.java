@@ -44,19 +44,14 @@ public String purchaseDetails(Model model, @PathVariable Long purchaseId){
         model.addAttribute("purchases", purchases);
         return "admin-purchases";
     }
-//
-//    //// to będzie wyszukiwanie zamówień po dowolnym keyword
-//    @GetMapping
-//    @RequestMapping("/purchases/search/{keyword}")
-//    public String purchaseSearch(Model model, @PathVariable String keyword){
-//        PurchaseDto purchaseByKeyword = purchaseService.getPurchaseByKeyword(keyword);
-//        model.addAttribute("purchaseByKeyword", purchaseByKeyword);
-////    Nie wiem czy to poniżej będzie potrzebne
-////        List<CustomerPurchaseDto> foundPurchases = purchaseService.getEbooksFromPastPurchases(purchaseById.getId());
-////        model.addAttribute("purchasedEbooks", purchasedEbooks);
-//        return "admin-purchase-details";
-//    }
 
+    @GetMapping
+    @RequestMapping("/ebookslist")
+    public String getEbooksList(Model model) {
+        List<EbookDto> ebooksFromDb = ebookService.getEbooks();
+        model.addAttribute("ebooks", ebooksFromDb);
+        return "admin-ebooks";
+    }
 
     @PostMapping
     @RequestMapping("/add")

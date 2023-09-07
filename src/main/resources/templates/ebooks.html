@@ -20,9 +20,7 @@
             <div class="col-4">
                 <div class="card mx-auto" style="width: 18rem;">
 
-
                     <div class="card-body">
-
                         <h5 class="card-title" th:text="${ebook.title}">Ebook title</h5>
                         <h6 class="card-subtitle mb-2 text-muted" th:text="${ebook.genre}">Ebook genre</h6>
                         <a th:href="@{/ebooks/details/__${ebook.id}__}">
@@ -32,15 +30,12 @@
                         <p class="card-text" th:text="${ebook.description}">Ebooks description</p>
 
                         <h6 class="mx-auto" th:text="${ebook.sellingPrice} + '0 zł'">Price</h6>
-                                <form th:action="@{/cart/add}" method="post">
-                                    <input type="hidden" name = "ebookId" th:value="${ebook.id}"/>
-
-                                    <button type="submit" style="width: 100%;" class="btn btn-primary mb-3">Add to cart</button>
-                                </form>
-                        <a th:href="@{/ebooks/details/__${ebook.id}__}"  style="width: 100%;" class="btn btn-primary mb-3">Details</a>
-
-
-
+                        <form th:action="@{/cart/add}" method="post">
+                            <input type="hidden" name="ebookId" th:value="${ebook.id}"/>
+                            <button type="submit" style="width: 100%;" class="btn btn-primary mb-3">Add to cart</button>
+                        </form>
+                        <a th:href="@{/ebooks/details/__${ebook.id}__}" style="width: 100%;"
+                           class="btn btn-primary mb-3">Details</a>
 
                     </div>
                 </div>

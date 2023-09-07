@@ -2,12 +2,7 @@
 Panel administracyjny
 - widok panelu XX
 - podgląd / lista zamówień  XX
-- wyszukiwarka zamówień
-* search bar w html XX
-* metoda wyszukiwania w serwisie
-* kontroler -> zaczęty, nieprzetestowany
-
-* połaczenie html z kontrolerem przez thymeleaf
+- wyszukiwarka zamówień  -> KONIECZNIE ALE NA KOŃCU
 - podgląd / lista ebooków + możliwość edycji
 - dodać walidację ebooków
 
@@ -16,15 +11,10 @@ Panel klienta
 - dodać walidację klienta
 - poprawić strone logowania, dodać logowanie na pasku nav
 
-Lista ebooków (strona główna)
-- poprawić wygląd kafelków 
-- poprawić format ceny na 00,00 XXX
-- ogólna estetyka
 
 Szczegółowy podgląd ebooka
-- dodać przycisk "dodaj do koszyka"
-- licznik koszyka w pasku nav
-- ogólna estetyka
+- dodać przycisk "dodaj do koszyka" xxx
+- licznik koszyka w pasku nav xxx
 
 Wózek:
 - zmnień liczbę produktów w koszyku
