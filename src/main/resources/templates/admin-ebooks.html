@@ -18,6 +18,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
+                <th scope="col">Action</th>
                 <th scope="col">Id</th>
                 <th scope="col">Title</th>
                 <th scope="col">Author</th>
@@ -27,22 +28,31 @@
                 <th scope="col">Buying cost</th>
                 <th scope="col">Format</th>
                 <th scope="col">Language</th>
-                <th scope="col">Action</th>
+
             </tr>
             </thead>
             <tbody>
             <tr th:each="ebook: ${ebooks}">
+                <td >
+
+                    <div>
+                        <a th:href="@{/admin}"  style="width: 100%;" class="btn btn-success mb-3">Edit</a>
+                    </div>
+                    <div>
+                        <a th:href="@{/admin/}"  style="width: 100%;" class="btn btn-success mb-3">Delete</a>
+                    </div>
+
+                </td>
                 <td th:text="${ebook.id}">id</td>
                 <td th:text="${ebook.title}">title</td>
                 <td th:text="${ebook.authors}">authors</td>
                 <td th:text="${ebook.publisher}">publisher</td>
                 <td th:text="${ebook.genre}">genre</td>
                 <td th:text="${ebook.sellingPrice}">s price</td>
-                <td> cena zakupu</td>
-<!--                dodać do DTO cenę zakupu i dodać do listy -->
+                <td th:text="${ebook.purchaseCost}">cost</td>
                 <td th:text="${ebook.format}">format</td>
                 <td th:text="${ebook.language}">language</td>
-                <td > DODAJ PRZYCISKI EDIT I DELETE</td>
+
             </tr>
             </tbody>
         </table>

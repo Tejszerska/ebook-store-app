@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.ebookstore.app.entities.Ebook;
-import pl.ebookstore.app.model.dtos.CustomerPurchaseDto;
 import pl.ebookstore.app.model.dtos.EbookDto;
 import pl.ebookstore.app.model.dtos.PurchaseDto;
 import pl.ebookstore.app.model.enums.Format;
@@ -45,6 +44,30 @@ public String purchaseDetails(Model model, @PathVariable Long purchaseId){
         return "admin-purchases";
     }
 
+    @PostMapping
+    @RequestMapping("/edit/{ebookId}")
+    public String editEbook(EbookDto ebookDto, @RequestParam("cover") MultipartFile file, @PathVariable Long ebookId) {
+        ebookDto.setCoverUrl(file.getOriginalFilename());
+        ebookService.editEbook(ebookDto, file);
+        return "redirect:/admin/ebookslist";
+    }
+
+    @GetMapping
+    @RequestMapping("/edit-view/{ebookId}")
+    public String getEditEbookView(Model model, @PathVariable Long ebookId) {
+        EbookDto ebookById = ebookService.getEbookById(ebookId);
+        model.addAttribute("ebookById", ebookById);
+        model.addAttribute("editedEbook", ebookById);
+        List<String> genreList = Arrays.stream(Genre.values()).map(Enum::name).toList();
+        model.addAttribute("genres", genreList);
+        List<String> formatList = Arrays.stream(Format.values()).map(Enum::name).toList();
+        model.addAttribute("formats", formatList);
+        List<String> languageList = Arrays.stream(Language.values()).map(Enum::name).toList();
+        model.addAttribute("languages", languageList);
+        return "edit-ebook";
+    }
+
+
     @GetMapping
     @RequestMapping("/ebookslist")
     public String getEbooksList(Model model) {
@@ -52,6 +75,7 @@ public String purchaseDetails(Model model, @PathVariable Long purchaseId){
         model.addAttribute("ebooks", ebooksFromDb);
         return "admin-ebooks";
     }
+
 
     @PostMapping
     @RequestMapping("/add")
