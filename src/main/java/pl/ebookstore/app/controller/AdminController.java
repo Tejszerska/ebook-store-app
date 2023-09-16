@@ -47,9 +47,14 @@ public String purchaseDetails(Model model, @PathVariable Long purchaseId){
     @PostMapping
     @RequestMapping("/edit/{ebookId}")
     public String editEbook(EbookDto ebookDto, @RequestParam("cover") MultipartFile file, @PathVariable Long ebookId) {
-        ebookDto.setCoverUrl(file.getOriginalFilename());
-        ebookService.editEbook(ebookDto, file);
-        return "redirect:/admin/ebookslist";
+
+        if(file.isEmpty()){
+            ebookService.editEbookWithoutCover(ebookDto, ebookId);
+        } else {
+            ebookDto.setCoverUrl(file.getOriginalFilename());
+            ebookService.editEbookWithCover(ebookDto, ebookId, file);
+        }
+        return "redirect:/admin/ebooks-list";
     }
 
     @GetMapping
@@ -69,7 +74,7 @@ public String purchaseDetails(Model model, @PathVariable Long purchaseId){
 
 
     @GetMapping
-    @RequestMapping("/ebookslist")
+    @RequestMapping("/ebooks-list")
     public String getEbooksList(Model model) {
         List<EbookDto> ebooksFromDb = ebookService.getEbooks();
         model.addAttribute("ebooks", ebooksFromDb);

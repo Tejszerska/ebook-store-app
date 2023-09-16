@@ -64,7 +64,29 @@ public class EbookService {
         return new EbookDto(ebook.getId(), ebook.getTitle(), ebook.getAuthors(), ebook.getPublisher(), ebook.getCoverUrl(), ebook.getDescription(), ebook.getGenre().toString(), ebook.getSellingPrice(), ebook.getPurchaseCost(), ebook.getFormat().toString(), ebook.getLanguage().toString());
     }
 
-    public void editEbook(EbookDto ebookDto, MultipartFile file) {
+    public Ebook editEbook(EbookDto ebookDto, Long ebookId) {
+        Ebook ebook = ebookRepository.findById(ebookId).orElseThrow(() -> new IllegalArgumentException(ebookId + ": there is no ebook with that ID in the database."));
+        ebook.setTitle(ebookDto.getTitle());
+        ebook.setAuthors(ebookDto.getAuthors());
+        ebook.setPublisher(ebookDto.getPublisher());
+        ebook.setDescription(ebookDto.getDescription());
+        ebook.setGenre(Genre.valueOf(ebookDto.getGenre()));
+        ebook.setSellingPrice(ebookDto.getSellingPrice());
+        ebook.setPurchaseCost(ebookDto.getPurchaseCost());
+        ebook.setFormat(Format.valueOf(ebookDto.getFormat()));
+        ebook.setLanguage(Language.valueOf(ebookDto.getLanguage()));
+        return ebook;
+    }
+
+    public void editEbookWithoutCover(EbookDto ebookDto, Long ebookId) {
+        ebookRepository.save(editEbook(ebookDto, ebookId));
+    }
+
+    public void editEbookWithCover(EbookDto ebookDto, Long ebookId, MultipartFile file) {
+        Ebook ebook = editEbook(ebookDto, ebookId);
+        ebook.setCoverUrl(ebookDto.getCoverUrl());
+        ebookRepository.save(ebook);
+        coverUpload(file);
 
     }
 }
